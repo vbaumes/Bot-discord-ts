@@ -8,4 +8,4 @@ const handleSelectMenu = async interaction => {
     }
 }
 
-export {handleSelectMenu};
+export default handleSelectMenu;

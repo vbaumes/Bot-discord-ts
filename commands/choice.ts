@@ -1,23 +1,18 @@
-import { SlashCommandBuilder } from '@discordjs/builders';
+const SlashCommandBuilder = require('@discordjs/builders');
+import { CommandInteraction } from 'discord.js';
 
-module.exports = {
-    data: new SlashCommandBuilder()
-        .setName('choice')
-        .setDescription('Permet de faire un choix')
-        .addStringOption(option => {
-            return option.setName('choice')
-            .setDescription('Le choix  faire')
+export const data = new SlashCommandBuilder().setName('choice').setDescription('Permet de faire un choix').addStringOption(option => {
+        return option.setName('choice')
+            .setDescription('Le choix a faire')
             .setRequired(true)
             .addChoice('Choix 1', '1')
             .addChoice('Choix 2', '2')
             .addChoice('Choix 3', '3')
-        }),
-    /**
-    * @param {CommandInteraction} interaction
-    */
-    async execute(interaction) {
+        }
+    );
+
+export async function execute(interaction: CommandInteraction) {
         const choice = interaction.options.getString('choice');
 
-        await interaction.reply(choice);
-    }
-};
+        return await interaction.reply(choice);
+}
